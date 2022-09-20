@@ -76,7 +76,7 @@ class App:
             print("se ejecuto")
             print(filenameN,filenameThreeN,filenameTwoN)
             if((filenameN!="")&(filenameTwoN!="")&(filenameThreeN!="")):
-                proline.line_line(filenameN)
+                proline.line_line(filenameN,filenameTwoN)
                 print("Exito")
             else:
                 print("No se acaba")
@@ -136,7 +136,9 @@ class App:
         
         label_file_explorer_three.grid(column = 1, row = 5) 
         
-        button_explore_three.grid(column = 1, row = 6) 
+        button_explore_three.grid(column = 1, row = 6)
+        
+        button_explore_three.grid(column = 1, row = 7)  
 
         button_process.grid(column = 1, row = 8 )
         
