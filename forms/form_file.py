@@ -76,7 +76,7 @@ class App:
             print("se ejecuto")
             print(filenameN,filenameThreeN,filenameTwoN)
             if((filenameN!="")&(filenameTwoN!="")&(filenameThreeN!="")):
-                proline.line_line(filenameN,filenameTwoN)
+                proline.line_line(self, filenameN, filenameTwoN)
                 print("Exito")
             else:
                 print("No se acaba")
