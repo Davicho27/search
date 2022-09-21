@@ -24,7 +24,7 @@ def line_line(self, pathone, pathtwo):
             print("No se encontro")
         num = 0
         archi1.write('\n')
-    mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
+    mb.showinfo("Información", "Los datos fueron guardados con exito.")
     archi1.close()
     f.close()
     return nombrearch

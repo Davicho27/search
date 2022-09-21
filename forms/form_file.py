@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk, filedialog
 from tkinter import messagebox as mb
 from tkinter.font import BOLD
+from xml.dom.minidom import ReadOnlySequentialNamedNodeMap
 import util.progress_line as proline
 import util.generic as utl
 
@@ -20,7 +21,7 @@ class App:
 
         def browseFiles():
             filename = filedialog.askopenfilename(initialdir = "/", 
-                                                title = "Select a File", 
+                                                title = "Seleccione el archivo", 
                                                 filetypes = (("Text files", 
                                                                 "*.txt*"), 
                                                             ("all files", 
@@ -29,7 +30,7 @@ class App:
                 label_file_explorer.configure(text="Archivo: "+filename)
 
             else:
-                label_file_explorer.configure(text="Aun no hay archivo disponible")
+                label_file_explorer.configure(text="No hay archivo disponible")
         
             global filenameN 
             filenameN = filename
@@ -39,7 +40,7 @@ class App:
         def browseFilesTwo():
             global filenameTwo 
             filenameTwo = filedialog.askopenfilename(initialdir = "/", 
-                                                title = "Select a File", 
+                                                title = "Seleccione el archivo", 
                                                 filetypes = (("Text files", 
                                                                 "*.txt*"), 
                                                             ("all files", 
@@ -49,7 +50,7 @@ class App:
             if(filenameTwo!=""):
                 label_file_explorer_two.configure(text="Archivo: "+filenameTwo)
             else:
-                label_file_explorer_two.configure(text="Aun no hay archivo disponible")
+                label_file_explorer_two.configure(text="No hay archivo disponible")
             
             global filenameTwoN 
             filenameTwoN = filenameTwo
@@ -84,7 +85,7 @@ class App:
         self.ventana.geometry('800x500')
         self.ventana.config(bg='#05B7D0')
         self.ventana.resizable(width=0, height=0)
-        utl.centrar_ventana(self.ventana, 800, 560)
+        utl.centrar_ventana(self.ventana, 800, 500)
 
         label_title= Label(self.ventana,  
                             text = "Búsqueda .TXT",font=("Times New Roman", 25, 'bold'),
@@ -150,21 +151,21 @@ class App:
                             height = 2, 
                             width = 14)  
         
-        label_title.grid(column = 1, row = 1) 
+        label_title.grid(column = 1, row = 1, columnspan=2) 
 
-        label_file_explorer.grid(column = 1, row = 2) 
+        label_file_explorer.grid(column = 1, row = 2, columnspan=2) 
         
-        button_explore.grid(column = 1, row = 3, pady = 4, padx = 100) 
+        button_explore.grid(column = 1, row = 3,columnspan=2, pady = 4, padx = 100) 
 
-        label_file_explorer_two.grid(column = 1, row = 4) 
+        label_file_explorer_two.grid(column = 1, row = 4, columnspan=2) 
         
-        button_explore_two.grid(column = 1, row = 5, pady = 4, padx = 100)
+        button_explore_two.grid(column = 1, row = 5, pady = 4, padx = 100, columnspan=2)
         
-        label_file_explorer_three.grid(column = 1, row = 6) 
+        label_file_explorer_three.grid(column = 1, row = 6, columnspan=2)
 
-        button_process.grid(column = 1, row = 9, pady = 8, padx = 100)
+        button_process.grid(column = 1, row = 9, pady = 14, padx = 50, ipadx=25, columnspan=1)
         
-        button_exit.grid(column = 1, row = 11, pady = 8, padx = 100) 
+        button_exit.grid(column = 2, row = 9, pady =14, padx = 100, ipadx=25, columnspan=1) 
 
         self.ventana.mainloop()
     
