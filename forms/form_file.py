@@ -62,6 +62,7 @@ class App:
 
         def buttonProcess():
             print("se ejecuto")
+            button_process.configure(state=DISABLED)
             global filenameN
             global filenameTwoN
             print(filenameN,filenameTwoN)
@@ -72,7 +73,6 @@ class App:
                 filenameN =""
                 filenameTwoN = ""
                 label_file_explorer_three.configure(text="Destino del archivo: "+archivo)
-                button_process.configure(state=DISABLED)
                 print("Exito")
             else:
                 mb.showinfo("Error", "Se ha producido un error en la carga de archivos.")
