@@ -81,14 +81,22 @@ class App:
         self.ventana = tk.Tk()
         self.ventana.title('Búsqueda')
         self.ventana.geometry('800x500')
-        self.ventana.config(bg='#fcfcfc')
+        self.ventana.config(bg='#05B7D0')
         self.ventana.resizable(width=0, height=0)
-        utl.centrar_ventana(self.ventana, 800, 500)
+        utl.centrar_ventana(self.ventana, 800, 520)
+
+        label_title= Label(self.ventana,  
+                            text = "Búsqueda .TXT",font=("Times New Roman", 25, 'bold'),
+                            bg='#05B7D0',
+                            fg='#ffffff', 
+                            width = 20, height = 3) 
 
         label_file_explorer = Label(self.ventana,  
                             text = "Archivo .txt lo que deseas buscar 'línea por línea'", 
-                            width = 115, height = 4,  
-                            fg = "blue") 
+                            width = 90, height = 4,
+                            font=("Arial", 10),
+                            bg= '#05AAC1',  
+                            fg = "white") 
    
        
         button_explore = Button(self.ventana,  
@@ -97,8 +105,10 @@ class App:
 
         label_file_explorer_two = Label(self.ventana,  
                     text = "Archivo .txt de la base de datos 'línea por línea'", 
-                    width = 115, height = 4,  
-                    fg = "blue")
+                    width = 90, height = 4,
+                    font=("Arial", 10),
+                    bg= '#05AAC1',   
+                    fg = "white")
 
         button_explore_two = Button(self.ventana,  
                         text = "Buscar", 
@@ -106,8 +116,10 @@ class App:
 
         label_file_explorer_three = Label(self.ventana,  
                     text = "Destino del archivo", 
-                    width = 115, height = 4,  
-                    fg = "blue") 
+                    width = 90, height = 6,
+                    font=("Arial", 11),
+                    bg= '#ffffff',   
+                    fg = "black") 
         
         
         button_process = Button(self.ventana,  
@@ -119,19 +131,21 @@ class App:
                             text = "Salir", 
                             command = exit)  
         
-        label_file_explorer.grid(column = 1, row = 1) 
-        
-        button_explore.grid(column = 1, row = 2) 
+        label_title.grid(column = 1, row = 1) 
 
-        label_file_explorer_two.grid(column = 1, row = 3) 
+        label_file_explorer.grid(column = 1, row = 2) 
         
-        button_explore_two.grid(column = 1, row = 4) 
-        
-        label_file_explorer_three.grid(column = 1, row = 5) 
+        button_explore.grid(column = 1, row = 3) 
 
-        button_process.grid(column = 1, row = 8 )
+        label_file_explorer_two.grid(column = 1, row = 4) 
         
-        button_exit.grid(column = 1, row = 10) 
+        button_explore_two.grid(column = 1, row = 5) 
+        
+        label_file_explorer_three.grid(column = 1, row = 6) 
+
+        button_process.grid(column = 1, row = 9 )
+        
+        button_exit.grid(column = 1, row = 11) 
 
         self.ventana.mainloop()
     
