@@ -8,7 +8,7 @@ def line_line(self, pathone, pathtwo):
     ft = open (pathtwo, "r")
     lineaOne = f.readlines()
     lineaDos = ft.readlines()
-    nombrearch=filedialog.asksaveasfilename(initialdir = "/",title = "Guardar como",filetypes = (("txt files","*.txt"),("todos los archivos","*.*")))
+    nombrearch=filedialog.asksaveasfilename(initialdir = "/",title = "Guardar como",defaultextension='.txt',filetypes = (("txt files","*.txt"),("todos los archivos","*.*")))
     archi1=open(nombrearch, "w", encoding="utf-8")
     for linea in lineaOne:
         print(linea.strip())
@@ -27,5 +27,6 @@ def line_line(self, pathone, pathtwo):
     mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
     archi1.close()
     f.close()
+    return nombrearch
 
         

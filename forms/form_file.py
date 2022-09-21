@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk, messagebox, filedialog
+from tkinter import ttk, filedialog
+from tkinter import messagebox as mb
 from tkinter.font import BOLD
 import util.progress_line as proline
 import util.generic as utl
@@ -54,35 +55,31 @@ class App:
             print(filenameTwoN)
             buttonActive() 
 
-        def browseFilesThree(): 
-            global filenameThree
-            filenameThree = filedialog.askdirectory()
-
-            if(filenameThree!=""):
-                label_file_explorer_three.configure(text="Carpeta: "+filenameThree)
-            else:
-                label_file_explorer_three.configure(text="Aun no hay carpeta disponible")
-
-            global filenameThreeN 
-            filenameThreeN = filenameThree
-            print(filenameThreeN)
-            buttonActive()  
 
         def buttonActive():
-            if((filenameN!="")&(filenameTwoN!="")&(filenameThreeN!="")):
+            if((filenameN!="")&(filenameTwoN!="")):
                 button_process.configure(state=NORMAL)
 
         def buttonProcess():
             print("se ejecuto")
-            print(filenameN,filenameThreeN,filenameTwoN)
-            if((filenameN!="")&(filenameTwoN!="")&(filenameThreeN!="")):
-                proline.line_line(self, filenameN, filenameTwoN)
+            global filenameN
+            global filenameTwoN
+            print(filenameN,filenameTwoN)
+            if((filenameN!="")&(filenameTwoN!="")):
+                archivo = proline.line_line(self, filenameN, filenameTwoN)
+                label_file_explorer.configure(text="Archivo .txt lo que deseas buscar 'línea por línea'")
+                label_file_explorer_two.configure(text="Archivo .txt de la base de datos 'línea por línea'")
+                filenameN =""
+                filenameTwoN = ""
+                label_file_explorer_three.configure(text="Destino del archivo: "+archivo)
+                button_process.configure(state=DISABLED)
                 print("Exito")
             else:
-                print("No se acaba")
+                mb.showinfo("Error", "Se ha producido un error en la carga de archivos.")
+                print("Se acabó")
 
         self.ventana = tk.Tk()
-        self.ventana.title('Busqueda')
+        self.ventana.title('Búsqueda')
         self.ventana.geometry('800x500')
         self.ventana.config(bg='#fcfcfc')
         self.ventana.resizable(width=0, height=0)
@@ -99,7 +96,7 @@ class App:
                                 command = browseFiles)
 
         label_file_explorer_two = Label(self.ventana,  
-                    text = "Archivo txt de la base de datos 'línea por línea'", 
+                    text = "Archivo .txt de la base de datos 'línea por línea'", 
                     width = 115, height = 4,  
                     fg = "blue")
 
@@ -110,15 +107,11 @@ class App:
         label_file_explorer_three = Label(self.ventana,  
                     text = "Destino del archivo", 
                     width = 115, height = 4,  
-                    fg = "blue")
-        
-        button_explore_three = Button(self.ventana,  
-                text = "Carpeta de destino", 
-                command = browseFilesThree)   
+                    fg = "blue") 
         
         
         button_process = Button(self.ventana,  
-                    text = "Procesar datos", 
+                    text = "Guardar datos", 
                     command = buttonProcess,
                     state = DISABLED)  
         
@@ -135,10 +128,6 @@ class App:
         button_explore_two.grid(column = 1, row = 4) 
         
         label_file_explorer_three.grid(column = 1, row = 5) 
-        
-        button_explore_three.grid(column = 1, row = 6)
-        
-        button_explore_three.grid(column = 1, row = 7)  
 
         button_process.grid(column = 1, row = 8 )
         
